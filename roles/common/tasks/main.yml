@@ -1,0 +1,13 @@
+---
+# This playbook creates the seedbox user that will be used by all services
+
+- name: Create 'seedbox' group
+  group:
+    name: seedbox
+    gid: '{{ groupid }}' 
+
+- name: Create 'seedbox' user
+  user:
+    name: seedbox
+    uid: '{{ userid }}' 
+    group: seedbox 

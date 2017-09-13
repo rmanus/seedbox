@@ -1,0 +1,31 @@
+---
+# Install Docker
+
+- name: Install required packages 
+  apt:
+    name: '{{item}}'
+    state: present
+    update_cache: yes 
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl 
+    - gnupg2
+    - software-properties-common 
+
+- name: Add Docker's official GPG key
+  apt_key:
+    url: '{{ docker_gpg_url }}' 
+    validate_certs: no
+    state: present 
+
+- name: Configure upstream APT repository
+  apt_repository:
+    repo: '{{ docker_repository }}'
+    state: present
+    update_cache: True
+
+- name: Install Docker package
+  apt:
+    name: docker-ce
+    state: present

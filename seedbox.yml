@@ -3,22 +3,22 @@
 
 - name: apply common configuration to all nodes
   hosts: all
+  # become_user: root
   remote_user: root
-  # remote_user: user
   # become: yes
   # become_method: sudo
 
   roles:
   - common
   - docker
-  - transmission-tvshows
-  - transmission-movies
-  - sonarr
-  - radarr
-  - ombi
-  - plex
-  - plexpy
-  - jackett
-  - rutorrent
-  - glances
-  - muximux
+#  - transmission-tvshows
+#  - transmission-movies
+#  - sonarr
+#  - radarr
+#  - ombi
+#  - plex
+#  - plexpy
+#  - jackett
+#  - rutorrent
+#  - glances
+#  - muximux

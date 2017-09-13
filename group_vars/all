@@ -1,0 +1,23 @@
+---
+# Variables listed here are applicable to all host groups
+
+userid: 1100
+groupid: 1100
+
+docker_gpg_url: 'https://download.docker.com/linux/debian/gpg'
+
+docker_channel: 'stable'
+
+# The OS distribution and distribution release, thanks https://github.com/debops.
+# Doing it this way doesn't depend on having lsb-release installed.
+docker_distribution: '{{ ansible_local.core.distribution
+                         if (ansible_local|d() and ansible_local.core|d() and
+                             ansible_local.core.distribution|d())
+                         else ansible_distribution }}'
+docker_distribution_release: '{{ ansible_local.core.distribution_release
+                                 if (ansible_local|d() and ansible_local.core|d() and
+                                     ansible_local.core.distribution_release|d())
+                                 else ansible_distribution_release }}'
+
+# Address of the Docker repository.
+docker_repository: 'deb [arch=amd64] https://download.docker.com/linux/{{ docker_distribution | lower }} {{ docker_distribution_release }} {{ docker_channel }}'
