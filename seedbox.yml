@@ -9,16 +9,16 @@
   # become_method: sudo
 
   roles:
-	- common
-	- docker
-	- transmission-tvshows
-	- transmission-movies
-	- sonarr
-	- radarr
-	- ombi
-	- plex
-	- plexpy
-	- jackett
-	- rutorrent
-	- glances
-	- muximux
+  - common
+  - docker
+  - transmission-tvshows
+  - transmission-movies
+  - sonarr
+  - radarr
+  - ombi
+  - plex
+  - plexpy
+  - jackett
+  - rutorrent
+  - glances
+  - muximux
