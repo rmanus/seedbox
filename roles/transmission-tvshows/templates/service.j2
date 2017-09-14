@@ -8,11 +8,11 @@ Restart=always
 RestartSec=30
 ExecStart=/usr/bin/docker run --rm \
         -e PGID={{ groupid }} \
-		-e PUID={{ userid }} \
-		-e TZ={{ timezone }} \
+	-e PUID={{ userid }} \
+	-e TZ={{ timezone }} \
         -p 51414:51413 \
-		-p 51414:51413/udp \
-		-p 3000:9091 \
+	-p 51414:51413/udp \
+	-p 3000:9091 \
         -v /home/docker/sonarr/downloads:/downloads \
         -v /home/docker/transmission-tv/config:/config \
         -v /home/docker/transmission-tv/watch:/watch \

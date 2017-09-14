@@ -1,0 +1,25 @@
+[Unit]
+Description=Transmission for Radarr docker container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+        -e PGID={{ groupid }} \
+	-e PUID={{ userid }} \
+	-e TZ={{ timezone }} \
+        -p 51413:51413 \
+	-p 51413:51413/udp \
+	-p 2000:9091 \
+        -v /home/docker/radarr/downloads:/downloads \
+        -v /home/docker/transmission-movie/config:/config \
+        -v /home/docker/transmission-movie/watch:/watch \
+        --name transmission_radarr \
+        linuxserver/transmission
+
+ExecStop=/usr/bin/docker stop transmission_radarr
+
+[Install]
+WantedBy=default.target

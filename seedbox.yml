@@ -12,7 +12,7 @@
   - common
   - docker
   - transmission-tvshows
-#  - transmission-movies
+  - transmission-movies
 #  - sonarr
 #  - radarr
 #  - ombi

@@ -1,5 +1,5 @@
 ---
-# Create the docker container for Transmission used by Sonarr
+# Create the docker container for Transmission used by Radarr
 
 - name: Create directories 
   file: 
@@ -10,24 +10,25 @@
     group: '{{ groupid }}'
     mode: 0775
   with_items:
-      - /home/docker/sonarr/downloads
-      - /home/docker/transmission-tv/config
-      - /home/docker/transmission-tv/watch
+      - /home/docker/radarr/downloads
+      - /home/docker/transmission-movie/config
+      - /home/docker/transmission-movie/watch
 
 - name: Create systemd service
   template:
     src: service.j2
-    dest: /etc/systemd/system/transmission-sonarr.service
+    dest: /etc/systemd/system/transmission-radarr.service
     owner: root
     group: root
     mode: 0644
 
 - name: Start service
   systemd:
-    name: transmission-sonarr.service
+    name: transmission-radarr.service
     state: started
     daemon_reload: yes
+
 - name: Enable service
   systemd:
-    name: transmission-sonarr.service
+    name: transmission-radarr.service
     enabled: yes
