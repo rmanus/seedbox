@@ -32,3 +32,14 @@ docker_repository: 'deb [arch=amd64] https://download.docker.com/linux/{{ docker
 
 plex_claim: claim-ow6PqYxpAyzypGera9zH
 
+###
+# Specific to Muximux
+###
+
+server_ip: 192.168.1.31
+
+###
+# Specific to FlexGet
+###
+
+flexget_passwd: 

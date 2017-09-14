@@ -1,0 +1,21 @@
+[Unit]
+Description=Muximux docker container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+        --name=muximux \
+        -v /home/docker/muximux/config:/config \
+        -e PGID={{ groupid }} \
+	-e PUID={{ userid }} \
+        -e TZ='{{ timezone }}' \
+		-p 80:80 \
+        linuxserver/muximux
+
+ExecStop=/usr/bin/docker stop muximux
+
+[Install]
+WantedBy=default.target

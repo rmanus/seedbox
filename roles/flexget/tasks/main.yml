@@ -1,0 +1,33 @@
+---
+# Create the docker container for PlexPy 
+
+- name: Create directories 
+  file: 
+    path: '{{ item }}'
+    recurse: yes
+    state: directory
+    owner: '{{ userid }}'
+    group: '{{ groupid }}'
+    mode: 0775
+  with_items:
+    - /home/docker/flexget/config
+    - /home/docker/flexget/downloads
+
+- name: Create systemd service
+  template:
+    src: service.j2
+    dest: /etc/systemd/system/flexget.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Start service
+  systemd:
+    name: flexget.service
+    state: started
+    daemon_reload: yes
+
+- name: Enable service
+  systemd:
+    name: flexget.service
+    enabled: yes

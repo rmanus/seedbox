@@ -1,0 +1,7 @@
+---
+# Handler to handle config file modification
+
+- name: restart muximux
+  systemd: 
+    name: muximux
+    state: restarted

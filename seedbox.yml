@@ -18,7 +18,8 @@
   - radarr
   - ombi
   - plex
-#  - plexpy
-#  - rutorrent
-#  - glances
-#  - muximux
+  - plexpy
+  - rutorrent
+  - flexget
+  - glances
+  - muximux

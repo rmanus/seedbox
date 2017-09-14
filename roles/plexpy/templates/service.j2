@@ -1,0 +1,20 @@
+[Unit]
+Description=PlexPy docker container
+Requires=docker.service
+After=plex.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+        --name plexpy \
+        -p 8181:8181 \
+        -e TZ={{ timezone }} \
+        -v /home/docker/plexpy/config:/config \
+        -v /home/docker/plex/config/Library/Application\ Support/Plex\ Media\ Server/Logs:/logs:ro \
+        linuxserver/plexpy
+
+ExecStop=/usr/bin/docker stop plexpy
+
+[Install]
+WantedBy=default.target

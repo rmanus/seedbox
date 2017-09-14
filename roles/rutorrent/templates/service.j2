@@ -1,0 +1,23 @@
+[Unit]
+Description=RuTorrent docker container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+        --name=rutorrent \
+        -v /home/docker/rutorrent/config:/config \
+        -v /home/docker/rutorrent/downloads:/downloads \
+        -e PGID={{ groupid }} \
+		-e PUID={{ userid }} \
+        -e TZ='{{ timezone }}' \
+        -p 8080:80 -p 5000:5000 \
+        -p 51415:51413 -p 6882:6881/udp \
+        linuxserver/rutorrent
+
+ExecStop=/usr/bin/docker stop rutorrent
+
+[Install]
+WantedBy=default.target

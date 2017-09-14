@@ -1,0 +1,20 @@
+[Unit]
+Description=Glances docker container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+        --name=glances \
+        -p 61208-61209:61208-61209 \
+        -e GLANCES_OPT=-w \
+        -v /var/run/docker.sock:/var/run/docker.sock:ro \
+        --pid host \
+        docker.io/nicolargo/glances
+
+ExecStop=/usr/bin/docker stop glances
+
+[Install]
+WantedBy=default.target

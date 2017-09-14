@@ -1,0 +1,21 @@
+---
+# Create the docker container for Glances 
+
+- name: Create systemd service
+  template:
+    src: service.j2
+    dest: /etc/systemd/system/glances.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Start service
+  systemd:
+    name: glances.service
+    state: started
+    daemon_reload: yes
+
+- name: Enable service
+  systemd:
+    name: glances.service
+    enabled: yes
