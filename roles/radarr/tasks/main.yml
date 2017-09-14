@@ -1,0 +1,34 @@
+---
+# Create the docker container for  Radarr
+
+- name: Create directories 
+  file: 
+    path: '{{ item }}'
+    recurse: yes
+    state: directory
+    owner: '{{ userid }}'
+    group: '{{ groupid }}'
+    mode: 0775
+  with_items:
+      - /home/docker/radarr/downloads
+      - /home/docker/radarr/config:/config
+      - /home/docker/radarr/movies:/movies
+
+- name: Create systemd service
+  template:
+    src: service.j2
+    dest: /etc/systemd/system/radarr.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Start service
+  systemd:
+    name: radarr.service
+    state: started
+    daemon_reload: yes
+
+- name: Enable service
+  systemd:
+    name: radarr.service
+    enabled: yes

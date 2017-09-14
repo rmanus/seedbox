@@ -1,0 +1,25 @@
+[Unit]
+Description=Sonarr docker container
+Requires=docker.service
+After=docker.service
+Wants=transmission-sonarr.service jackett.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+    --name sonarr \
+        -p 8989:8989 \
+        -e PUID={{ userid }} \
+	-e PGID={{ groupid }} \
+        -e TZ='{{ timezone }}' \
+        -v /etc/localtime:/etc/localtime:ro \
+        -v /home/docker/sonarr/config:/config \
+        -v /home/docker/sonarr/tvshows:/tv \
+        -v /home/docker/sonarr/downloads:/downloads \
+        linuxserver/sonarr
+
+ExecStop=/usr/bin/docker stop sonarr
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,23 @@
+[Unit]
+Description=Jackett for Sonarr/Radarr docker container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+        --name=jackett \
+        -p 9117:9117 \
+        -v /home/docker/jackett/config:/config \
+        -v /home/docker/jackett/downloads:/downloads \
+        -e PGID={{ groupid }} \
+	-e PUID={{ userid }} \
+        -e TZ='{{timezone }}' \
+        -v /etc/localtime:/etc/localtime:ro \
+        linuxserver/jackett
+
+ExecStop=/usr/bin/docker stop jackett
+
+[Install]
+WantedBy=default.target

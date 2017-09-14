@@ -5,8 +5,11 @@ userid: 1100
 groupid: 1100
 timezone: 'Europe/Paris'
 
-docker_gpg_url: 'https://download.docker.com/linux/debian/gpg'
+###
+# Specific to DOCKER
+###
 
+docker_gpg_url: 'https://download.docker.com/linux/debian/gpg'
 docker_channel: 'stable'
 
 # The OS distribution and distribution release, thanks https://github.com/debops.
@@ -22,3 +25,10 @@ docker_distribution_release: '{{ ansible_local.core.distribution_release
 
 # Address of the Docker repository.
 docker_repository: 'deb [arch=amd64] https://download.docker.com/linux/{{ docker_distribution | lower }} {{ docker_distribution_release }} {{ docker_channel }}'
+
+###
+# Specific to Plex
+###
+
+plex_claim: claim-ow6PqYxpAyzypGera9zH
+

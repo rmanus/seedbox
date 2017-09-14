@@ -1,0 +1,25 @@
+[Unit]
+Description=Radarr docker container
+Requires=docker.service
+After=docker.service
+Wants=transmission-radarr.service jackett.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+    --name radarr \
+        -p 7878:7878 \
+        -e PUID={{ userid }} \
+	-e PGID={{ groupid }} \
+        -e TZ='{{ timezone }}' \
+        -v /etc/localtime:/etc/localtime:ro \
+        -v /home/docker/radarr/config:/config \
+        -v /home/docker/radarr/movies:/movies \
+        -v /home/docker/radarr/downloads:/downloads \
+        linuxserver/radarr
+
+ExecStop=/usr/bin/docker stop radarr
+
+[Install]
+WantedBy=default.target

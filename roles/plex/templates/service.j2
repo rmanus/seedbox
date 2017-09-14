@@ -1,0 +1,27 @@
+[Unit]
+Description=Plex docker container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+        --name plex \
+        --network=host \
+        -e PLEX_UID={{ userid }} \
+	-e PLEX_GID={{ groupid }} \
+        -e PLEX_CLAIM={{ plex_claim }} \
+        -e TZ='{{ timezone }}' \
+        -v /home/docker/plex/config:/config \
+        -v /home/docker/sonarr/tvshows:/data/tvshows \
+        -v /home/docker/radarr/movies:/data/movies \
+        -v /home/kids-movies:/data/kids-movies \
+        -v /home/kids-tvshows:/data/kids-tvshows \
+        plexinc/pms-docker
+
+ExecStop=/usr/bin/docker stop plex
+
+[Install]
+WantedBy=default.target
+

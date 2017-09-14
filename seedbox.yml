@@ -13,12 +13,12 @@
   - docker
   - transmission-tvshows
   - transmission-movies
-#  - sonarr
-#  - radarr
-#  - ombi
-#  - plex
+  - jackett
+  - sonarr
+  - radarr
+  - ombi
+  - plex
 #  - plexpy
-#  - jackett
 #  - rutorrent
 #  - glances
 #  - muximux

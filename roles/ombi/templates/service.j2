@@ -1,0 +1,24 @@
+[Unit]
+Description=Ombi docker container
+Requires=docker.service
+After=docker.service
+Wants=plex.service radarr.service sonarr.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+        --name=ombi \
+        -p 3579:3579 \
+        -v /home/docker/ombi/config:/config \
+        -v /etc/localtime:/etc/localtime:ro \
+        -e TZ='{{ timezone }}' \
+        -e PGID={{ groupid }} \
+	-e PUID={{ userid }} \
+        linuxserver/ombi
+
+ExecStop=/usr/bin/docker stop ombi
+
+[Install]
+WantedBy=default.target
+
