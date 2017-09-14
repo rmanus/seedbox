@@ -3,6 +3,7 @@
 
 userid: 1100
 groupid: 1100
+timezone: 'Europe/Paris'
 
 docker_gpg_url: 'https://download.docker.com/linux/debian/gpg'
 
