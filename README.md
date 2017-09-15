@@ -1,7 +1,7 @@
-## seedbox
+# seedbox
 Full mediacenter server based on Docker containers
 
-# Description
+## Description
 
 This is project aims to deploy all services needed to configure a seedbox 
 (based on Linux Debian 8) as a full mediacenter.
@@ -19,7 +19,7 @@ All the services run into Docker containers
 - Glances is used for monitoring the server
 
 
-# Installation
+## Installation
 
 Requires : 
  Server running Debian 8
@@ -77,7 +77,7 @@ Connect to WebUI
  
 	http://<public_ip_address>
   
-# Dependencies
+## Dependencies
 
 This project depends on the following docker images
 
