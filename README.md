@@ -22,7 +22,7 @@ All the services run into Docker containers
 ## Installation
 
 Requires : 
- Server running Debian 8
+ - Server running Debian 8
  - Ansible 2.4 or newer
  - Git
 		   
@@ -31,6 +31,11 @@ The project uses an Ansible playbook to automate the installation of the service
 The Ansible playbook can be used to install the services on a local server or
 a on remote server.
 
+----------
+To install Git :
+
+	$ apt-get install git
+	
 ----------
 To install Ansible : 
  
@@ -43,19 +48,13 @@ Then run these commands:
      $ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
      $ sudo apt-get update
      $ sudo apt-get install ansible
- 
-
-
+     
 ----------
 To download Git project
     
 	$ git clone https://github.com/rmanus/seedbox.git
- 
 
-
-
-
-----------
+---------
 Edit groups_vars/all
  
 Adjust the following parameters :
