@@ -13,6 +13,14 @@
     - /home/docker/flexget/config
     - /home/docker/flexget/downloads
 
+- name: Copy config file
+  template:
+    src: config.j2
+    dest: /home/docker/flexget/config/config.yml
+    owner: '{{ userid }}'
+    group: '{{ groupid }}'
+    mode: 0644
+
 - name: Create systemd service
   template:
     src: service.j2
@@ -31,3 +39,12 @@
   systemd:
     name: flexget.service
     enabled: yes
+
+- name: Set password
+  command: /usr/bin/docker exec flexget /usr/local/bin/flexget -c /config/config.yml web passwd {{ flexget_passwd }}
+  register: out
+
+- name: Check password setting
+  debug: msg={{ out.stdout }}
+   
+    

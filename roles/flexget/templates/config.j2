@@ -1,0 +1,62 @@
+web_server: yes
+
+templates:
+  transmission-tv-date:
+    clean_transmission:
+      host: {{ server_ip }}
+      port: 3000
+      username: transmission
+      password: seedbox
+      finished_for: 7 days
+      delete_files: Yes
+      enabled: Yes
+
+  transmission-tv-ratio:
+    clean_transmission:
+      host: {{ server_ip }}
+      port: 3000
+      username: transmission
+      password: seedbox
+      min_ratio: 3
+      delete_files: Yes
+      enabled: Yes
+
+  transmission-movie-date:
+    clean_transmission:
+      host: {{ server_ip }}
+      port: 2000
+      username: transmission
+      password: seedbox
+      finished_for: 7 days
+      delete_files: Yes
+      enabled: Yes
+
+  transmission-movie-ratio:
+    clean_transmission:
+      host: {{ server_ip }}
+      port: 2000
+      username: transmission
+      password: seedbox
+      min_ratio: 3
+      delete_files: Yes
+      enabled: Yes
+
+tasks:
+   CLEANING_tv_date:
+    template:
+     - transmission-tv-date
+   CLEANING_ratio:
+    template:
+     - transmission-tv-ratio
+   CLEANING_movie_date:
+    template:
+     - transmission-movie-date
+   CLEANING__movie_ratio:
+    template:
+     - transmission-movie-ratio
+
+schedules:
+  - tasks: '*'
+    interval:
+      days: 1
+
