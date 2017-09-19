@@ -5,6 +5,30 @@
   docker: 
     image: superitman/fail2ban:latest
     pull: always
+
+- name: Create directory 
+  file: 
+    path: '{{ item }}'
+    recurse: yes
+    state: directory
+    owner: '{{ userid }}'
+    group: '{{ groupid }}'
+    mode: 0775
+  with_items:
+    - /home/docker/fail2ban/action.d
+    - /home/docker/fail2ban/filter.d
+   
+- name: Copy config files
+  copy: 
+    src: '{{ item }}'
+    dest: /home/docker/fail2ban/
+    owner: '{{ userid }}'
+    group: '{{ groupid }}'
+    mode: 0644
+    with_items:
+      - jail.local
+      - filter.d
+      - action.d
     
 - name: Create systemd service
   files:
