@@ -27,6 +27,11 @@ docker_distribution_release: '{{ ansible_local.core.distribution_release
 docker_repository: 'deb [arch=amd64] https://download.docker.com/linux/{{ docker_distribution | lower }} {{ docker_distribution_release }} {{ docker_channel }}'
 
 ###
+# Docker images 
+###
+fail2ban_image: superitman/fail2ban:latest
+
+###
 # Specific to Plex
 ###
 
