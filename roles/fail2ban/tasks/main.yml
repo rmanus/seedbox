@@ -3,7 +3,7 @@
 
 - name: Import docker image
   docker: 
-    image: '{{ fail2ban_image }}'
+    image: superitman/fail2ban:latest
     pull: always
     
 - name: Create systemd service
