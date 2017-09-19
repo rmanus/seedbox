@@ -1,0 +1,23 @@
+[Unit]
+Description=Fail2Ban Service
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+RestartSec=30
+ExecStart=/usr/bin/docker run --rm \
+  --name fail2ban \
+  -v /home/docker/fail2ban/jail.local:/etc/fail2ban/jail.local \
+  -v /home/docker/fail2ban/filter.d/udp-badchecksum.conf:/etc/fail2ban/filter.d/udp-badchecksum.conf \
+  -v /home/docker/fail2ban/filter.d/shrinks-window.conf:/etc/fail2ban/filter.d/shrinks-window.conf \
+  -v /home/docker/fail2ban/action.d/route.conf:/etc/fail2ban/action.d/route.conf \
+  -v /var/log:/var/log \
+  -v /etc/localtime:/etc/localtime:ro \
+  --net host \
+  --privileged \
+  superitman/fail2ban:latest
+ExecStop=/usr/bin/docker stop fail2ban
+
+[Install]
+WantedBy=multi-user.target
