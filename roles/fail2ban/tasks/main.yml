@@ -31,7 +31,7 @@
       - action.d
     
 - name: Create systemd service
-  files:
+  copy:
     src: fail2ban.service
     dest: /etc/systemd/system/fail2ban.service
     owner: root
