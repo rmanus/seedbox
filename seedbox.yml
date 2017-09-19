@@ -11,6 +11,7 @@
   roles:
   - common
   - docker
+  - fail2ban
   - transmission-tvshows
   - transmission-movies
   - jackett
