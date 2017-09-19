@@ -1,0 +1,26 @@
+---
+# Create the docker container for Fail2Ban
+
+- name: Import docker image
+  docker: 
+    image: '{{ fail2ban_image }}'
+    pull: always
+    
+- name: Create systemd service
+  files:
+    src: fail2ban.service
+    dest: /etc/systemd/system/fail2ban.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Start service
+  systemd:
+    name: fail2ban.service
+    state: started
+    daemon_reload: yes
+
+- name: Enable service
+  systemd:
+    name: fail2ban.service
+    enabled: yes
