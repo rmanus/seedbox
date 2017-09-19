@@ -62,7 +62,7 @@ Adjust the following parameters :
   
 	timezone
 	server_ip  		(this is the public ip address of the mediaserver)
-	flexget_passwd 	(required to connect to flexget WebUI)
+	flexget_passwd 		(required to connect to flexget WebUI)
 	plex_claim 		(The claim token for the server to obtain a real server token. 
 				If not provided, server is will not be automatically logged in. 
 				If server is already logged in, this parameter is ignored. 
