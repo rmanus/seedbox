@@ -17,6 +17,7 @@ All the services run into Docker containers
 - FlexGet is used to periodically clean Transmission queues
 - PlexPy is used for monitoring Plex server and Notifications (ie. on Slack channels)
 - Glances is used for monitoring the server
+- Fail2Ban is used to prevent DOS attacks
 
 
 ## Installation
@@ -91,3 +92,4 @@ This project depends on the following docker images
 - [linuxserver/plexpy](https://hub.docker.com/r/linuxserver/plexpy/)
 - [nicolargo/glances](https://hub.docker.com/r/nicolargo/glances/)
 - [cpoppema/docker-flexget](https://hub.docker.com/r/cpoppema/docker-flexget/)
+- [superitman/fail2ban](https://hub.docker.com/r/superitman/fail2ban)
