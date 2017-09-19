@@ -57,14 +57,12 @@ enabled = true
 filter = udp-badchecksum
 logpath = /var/log/kern.log
 action = route
-#sendmail-whois-lines[name=udp-badchecksum]
-
 
 [shrinks-window]
 enabled = true
 filter = shrinks-window
 logpath = /var/log/kern.log
 action = route
-#sendmail-whois-lines[name=udp-badchecksum]
+
 
 
