@@ -41,7 +41,7 @@
     enabled: yes
 
 - name: Set password
-  command: /usr/bin/docker exec flexget /usr/local/bin/flexget -c /config/config.yml web passwd {{ flexget_passwd }}
+  command: /usr/bin/docker exec flexget "rm /config/.config-lock; /usr/local/bin/flexget -c /config/config.yml web passwd {{ flexget_passwd }}"
   register: out
 
 - name: Check password setting
