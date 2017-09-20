@@ -11,6 +11,7 @@ ExecStart=/usr/bin/docker run --rm \
         -e PGID={{ groupid }} \
 	-e PUID={{ userid }} \
         -e TORRENT_PLUGIN=transmission \
+	-e WEB_PASSWD={{ flexget_passwd }} \
         -p 5050:5050 \
         -v /home/docker/flexget/config:/config \
         -v /home/docker/flexget/downloads:/downloads \
