@@ -13,7 +13,7 @@
     - gnupg2
     - software-properties-common 
 
- - name: Install pip
+- name: Install pip
    easy_install:
      name: pip
 
