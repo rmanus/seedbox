@@ -46,10 +46,10 @@
     state: absent
   
 - name: Set password 2/2
-  command: /usr/bin/docker exec flexget /usr/local/bin/flexget -c /config/config.yml web passwd {{ flexget_passwd }}
-  register: out
+  command: /usr/bin/docker exec flexget /usr/local/bin/flexget -c /config/config.yml web passwd '{{ flexget_passwd }}'
+  register: exec_output
   
 - name: Check password setting
-  debug: msg={{ out.stdout }}
+  debug: msg='{{ exec_output.result }}'
    
     
