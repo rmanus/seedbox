@@ -12,6 +12,7 @@
     - curl 
     - gnupg2
     - software-properties-common 
+    - python-pip
 
 - name: Add Docker's official GPG key
   apt_key:
@@ -28,4 +29,9 @@
 - name: Install Docker package
   apt:
     name: docker-ce
+    state: present
+
+- name: Install docker-py package
+  pip:
+    name: docker-py
     state: present
