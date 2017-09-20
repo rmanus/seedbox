@@ -2,9 +2,8 @@
 # Create the docker container for Fail2Ban
 
 - name: Import docker image
-  docker: 
-    image: superitman/fail2ban:latest
-    pull: always
+  docker_image: 
+    image: superitman/fail2ban
 
 - name: Create directory 
   file: 
