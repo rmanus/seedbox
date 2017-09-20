@@ -40,14 +40,16 @@
     name: flexget.service
     enabled: yes
   
-- name: Set password
-  command: /usr/bin/docker exec flexget /sbin/setuser abc '{{ item }}'
-  register: exec_output
-  with_items:
-    - rm /config/.config-lock
-    - /usr/local/bin/flexget -c /config/config.yml web passwd '{{ flexget_passwd }}'
+#- name: Set password 1/2
+#  file:
+#    name: /config/.config-lock
+#    state: absent
     
-- name: Check password setting
-  debug: msg='{{ exec_output.result }}'
+#- name : Set password 2/2
+#  command: /usr/bin/docker exec flexget /sbin/setuser abc /usr/local/bin/flexget -c /config/config.yml web passwd '{{ flexget_passwd }}'
+#  register: exec_output
+    
+#- name: Check password setting
+#  debug: msg='{{ exec_output.result }}'
    
     
