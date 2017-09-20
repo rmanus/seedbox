@@ -39,13 +39,8 @@
   systemd:
     name: flexget.service
     enabled: yes
-
-- name: Set password 1/2
-  file: 
-    name: /home/docker/flexget/config/.config-lock
-    state: absent
   
-- name: Set password 2/2
+- name: Set password
   command: /usr/bin/docker exec flexget /usr/local/bin/flexget -c /config/config.yml web passwd '{{ flexget_passwd }}'
   register: exec_output
   
