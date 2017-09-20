@@ -14,8 +14,8 @@
     - software-properties-common 
 
 - name: Install pip
-   easy_install:
-     name: pip
+  easy_install:
+    name: pip
 
 - name: Add Docker's official GPG key
   apt_key:
