@@ -12,7 +12,10 @@
     - curl 
     - gnupg2
     - software-properties-common 
-    - python-pip
+
+ -name: Install pip
+   easy_install:
+     name: pip
 
 - name: Add Docker's official GPG key
   apt_key:
@@ -33,5 +36,5 @@
 
 - name: Install docker-py package
   pip:
-    name: docker-py
+    name: docker
     state: present
