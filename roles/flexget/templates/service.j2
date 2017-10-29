@@ -6,6 +6,7 @@ After=sonarr.service radarr.service
 [Service]
 Restart=always
 RestartSec=30
+ExecStartPre=/bin/rm /home/docker/flexget/config/.config-lock
 ExecStart=/usr/bin/docker run --rm \
         --name=flexget \
         -e PGID={{ groupid }} \
