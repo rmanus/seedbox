@@ -13,9 +13,14 @@
     - gnupg2
     - software-properties-common 
 
+# - name: Install pip
+#  easy_install:
+#    name: pip
+
 - name: Install pip
-  easy_install:
-    name: pip
+  apt:
+    name: python-pip
+    state: present
 
 - name: Add Docker's official GPG key
   apt_key:

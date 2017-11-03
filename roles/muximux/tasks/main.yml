@@ -10,7 +10,7 @@
     group: '{{ groupid }}'
     mode: 0775
   with_items:
-    - /home/docker/muximux/config
+    - /home/docker/muximux/config/www/muximux
 
 - name: Create systemd service
   template:

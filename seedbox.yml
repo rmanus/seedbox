@@ -3,10 +3,10 @@
 
 - name: apply common configuration to all nodes
   hosts: all
-  # become_user: root
-  remote_user: root
-  # become: yes
-  # become_method: sudo
+  become_user: root
+  # remote_user: root
+  become: yes
+  become_method: su
 
   roles:
   - common
