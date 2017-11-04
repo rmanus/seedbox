@@ -3,6 +3,8 @@
 
 userid: 1100
 groupid: 1100
+# userpasswd string is generated from $ mkpasswd --method=sha-512
+userpasswd: '$6$ID69s.C60nAF$gTMbzrPJGJed3Op4/bC9LXLQraFdfbBywN9oA4l.wgXFbsnEpkM5ergaqYcasJl2a0ZJLr.urpKo9Cgcvw7sV0'
 timezone: 'Europe/Paris'
 
 ###
