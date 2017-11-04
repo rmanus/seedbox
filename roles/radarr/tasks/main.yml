@@ -11,8 +11,8 @@
     mode: 0775
   with_items:
       - /home/docker/radarr/downloads
-      - /home/docker/radarr/config:/config
-      - /home/docker/radarr/movies:/movies
+      - /home/docker/radarr/config
+      - /home/docker/radarr/movies
 
 - name: Create systemd service
   template:

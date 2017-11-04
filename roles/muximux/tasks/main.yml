@@ -3,14 +3,20 @@
 
 - name: Create directories 
   file: 
-    path: '{{ item }}'
+    path: '/home/docker/muximux/config/www/muximux'
     recurse: yes
     state: directory
     owner: '{{ userid }}'
     group: '{{ groupid }}'
     mode: 0775
-  with_items:
-    - /home/docker/muximux/config/www/muximux
+
+- name: Copy config file
+  template:
+    src: config.j2
+    dest: /home/docker/muximux/config/www/muximux/settings.ini.php
+    owner: '{{ userid }}'
+    group: '{{ groupid }}'
+    mode: 0644
 
 - name: Create systemd service
   template:
@@ -30,13 +36,3 @@
   systemd:
     name: muximux.service
     enabled: yes
-
-- name: Copy config file
-  template:
-    src: config.j2
-    dest: /home/docker/muximux/config/www/muximux/settings.ini.php
-    owner: '{{ userid }}'
-    group: '{{ groupid }}'
-    mode: 0644
-  notify: restart muximux
-

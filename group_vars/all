@@ -38,7 +38,8 @@ plex_claim: claim-ow6PqYxpAyzypGera9zH
 # Specific to Muximux & Fail2Ban
 ###
 
-server_ip: 192.168.1.31
+# server_ip: 192.168.1.31
+# it's currently commented out because it is defined in group_vars/<group> where <group> is defined in /etc/ansible/hosts
 
 ###
 # Specific to FlexGet
