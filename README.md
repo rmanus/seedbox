@@ -60,14 +60,15 @@ Edit groups_vars/all
  
 Adjust the following parameters :
   
+	userpasswd		Generate the string using $ mkpasswd --method=sha-512
 	timezone
-	server_ip  		(this is the public ip address of the mediaserver)
-	flexget_passwd 		(required to connect to flexget WebUI)
-	plex_claim 		(The claim token for the server to obtain a real server token. 
+	server_ip  		This is the public ip address of the mediaserver
+	flexget_passwd 		Required to connect to flexget WebUI
+	plex_claim 		The claim token for the server to obtain a real server token. 
 				If not provided, server is will not be automatically logged in. 
 				If server is already logged in, this parameter is ignored. 
 				You can obtain a claim token to login your server to your plex 
-				account by visiting https://www.plex.tv/claim )
+				account by visiting https://www.plex.tv/claim
 			  
 Execute Ansible playbook (on local server)
  
