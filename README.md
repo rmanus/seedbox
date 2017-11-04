@@ -23,14 +23,14 @@ All the services run into Docker containers
 ## Installation
 
 Requires : 
- - Server running Debian 8
- - Ansible 2.4 or newer
- - Git
+ - Server running Debian (tested on 8 and 9)
+ - Ansible 2.4 or newer (on server for running locally or on remote client)
+ - Git (on server for running locally or on remote client)
 		   
 The project uses an Ansible playbook to automate the installation of the services.
 
 The Ansible playbook can be used to install the services on a local server or
-a on remote server.
+a on remote client.
 
 ----------
 To install Git :
@@ -69,9 +69,14 @@ Adjust the following parameters :
 				You can obtain a claim token to login your server to your plex 
 				account by visiting https://www.plex.tv/claim )
 			  
-Execute Ansible playbook (on local host)
+Execute Ansible playbook (on local server)
  
 	$ sudo ansible-playbook -i "localhost," -c local site.yml
+	
+Execute Ansible playbook from remote client
+
+	Edit /etc/ansible/hosts and add public IP @ or FQDN of the server
+  	$ ansible-playbook --become-method=su --user=<ssh username to connect to server> -K site.yml
   
 Connect to WebUI
  
