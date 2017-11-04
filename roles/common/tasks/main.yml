@@ -10,4 +10,5 @@
   user:
     name: seedbox
     uid: '{{ userid }}' 
-    group: seedbox 
+    group: seedbox
+    password: '{{ userpasswd }}'
